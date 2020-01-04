@@ -25,6 +25,8 @@ const BtnStyle = styled.button`
 `
 
 
+
+
 export default function LastLog({ exerciseList }) {
 
   console.log("this is exerciseList in LastLog", exerciseList);
@@ -50,7 +52,10 @@ export default function LastLog({ exerciseList }) {
             <h3>Number of Sets: {exercise.sets}</h3>
             <h3>Number of Reps: {exercise.reps}</h3>
             <h3>Weight Lifted: {exercise.weightLifted}</h3>
-            <h3>Notes: {exercise.notes}</h3>
+            <div>
+              <h3 className="notes-card">Notes:</h3>
+              <p>{exercise.notes}</p>
+            </div>
           </CardContainer>    
         )}
         <Link to="/new-log">

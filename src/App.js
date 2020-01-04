@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
 import LogForm from "./components/LogForm";
-import { Route, Link } from "react-router-dom";
+import { Route } from "react-router-dom";
 import LastLog from "./components/LastLog";
 import Header from "./components/Header";
 
