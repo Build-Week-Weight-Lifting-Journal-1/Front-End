@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import styled from 'styled-components'
+import styled from 'styled-components';
+import exerciselog from '../images/exerciselog.jpg';
 
 const CardContainer = styled.div`
   display: flex;
@@ -24,6 +25,16 @@ const BtnStyle = styled.button`
   box-shadow: 4px 5px 5px #18181E;
 `
 
+const NotesContainer = styled.div`
+  border: 1px solid;
+  margin-bottom: 8%;
+  padding: 8px;
+  margin-left: -2%;
+  margin-right: -2%;
+`
+const H3Styled = styled.h3`
+  margin-top: 0;
+`
 
 
 
@@ -46,16 +57,19 @@ export default function LastLog({ exerciseList }) {
       <div>
         {exerciseList.map((exercise) =>
           <CardContainer>
-            <h3>Date: {exercise.date}</h3>
-            <h3>Exercise Type: {exercise.exerciseType}</h3>
-            <h3>Target Muscle: {exercise.targetMuscle}</h3>
-            <h3>Number of Sets: {exercise.sets}</h3>
-            <h3>Number of Reps: {exercise.reps}</h3>
-            <h3>Weight Lifted: {exercise.weightLifted}</h3>
-            <div>
-              <h3 className="notes-card">Notes:</h3>
-              <p>{exercise.notes}</p>
+            <div className="img-container">
+              <img className="card-img" src={exerciselog} />
             </div>
+            <h3 className="h3-date">Date: {exercise.date}</h3>
+            <H3Styled>Exercise Type: {exercise.exerciseType}</H3Styled>
+            <H3Styled>Target Muscle: {exercise.targetMuscle}</H3Styled>
+            <H3Styled>Number of Sets: {exercise.sets}</H3Styled>
+            <H3Styled>Number of Reps: {exercise.reps}</H3Styled>
+            <H3Styled>Weight Lifted: {exercise.weightLifted}</H3Styled>
+            <NotesContainer>
+              <h3 className="h3-notes">Notes:</h3>
+              <p className="p-notes">{exercise.notes}</p>
+            </NotesContainer>
           </CardContainer>    
         )}
         <Link to="/new-log">

@@ -115,8 +115,8 @@ const LogForm = ({ addNewExercise, values, errors, touched, status }) => {
         <h3>Add New Exercise</h3>
 
         <div className="date-container">
-          <label className="date-label" htmlFor="date">Date:
-          <Field
+          <label htmlFor="date">Date:
+          <Field className="date-field"
             id="date"
             type="date"
             name="date"

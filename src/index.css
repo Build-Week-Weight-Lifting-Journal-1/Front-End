@@ -15,11 +15,11 @@ code {
 
 .date-container {
   width: 100%;
-  margin-bottom: 8%;
+  margin-bottom: 5%;
 }
 
-.date-label {
-  margin-right: 2%;
+.date-field {
+  margin-left: 2%;
 }
 
 .nav-link {
@@ -56,6 +56,24 @@ code {
   height: 55px;
 }
 
-.notes-card {
+.h3-notes {
   margin: 0;
+}
+
+.p-notes {
+  width: 101%;
+  margin-top: 0;
+}
+
+.h3-date {
+  text-align: end;
+  margin-top: 0;
+}
+
+.card-img {
+  width: 100%;
+}
+
+.img-container {
+  margin-top: 5%;
 }
