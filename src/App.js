@@ -1,24 +1,47 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import LogForm from "./components/LogForm";
+import { Route, Link } from "react-router-dom";
+import LastLog from "./components/LastLog";
+import Header from "./components/Header";
 
 function App() {
+
+  const [exerciseList, setExerciseList] = useState([]);
+
+  const addNewExercise = (exercise) => {
+
+    const newExercise = {
+      date: exercise.date,
+      exerciseType: exercise.exerciseType,
+      targetMuscle: exercise.targetMuscle,
+      sets: exercise.sets,
+      reps: exercise.reps,
+      weightLifted: exercise.weightLifted,
+      notes: exercise.notes
+    }
+    const newExerciseList = [...exerciseList, newExercise];
+
+    setExerciseList(newExerciseList);
+  };
+
+  console.log("this is exerciseList", exerciseList);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <Route 
+        exact path="/" 
+        render={routeProps => {
+          return <LastLog {...routeProps}  exerciseList={exerciseList}/>
+        }} 
+      />
+      <Route 
+        path="/new-log"
+        render={routeProps => {
+          return <LogForm {...routeProps} addNewExercise={addNewExercise} />;
+        }}  
+      />
     </div>
   );
 }

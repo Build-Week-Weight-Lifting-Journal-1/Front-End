@@ -5,9 +5,26 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-family: 'Karma', serif;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.date-container {
+  width: 100%;
+  margin-bottom: 8%;
+}
+
+.date-label {
+  margin-right: 2%;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #DEC79B;
+  font-weight: bold;
+  font-family: 'Quicksand', sans-serif;
 }
