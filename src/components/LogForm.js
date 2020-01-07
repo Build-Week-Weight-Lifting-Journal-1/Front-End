@@ -7,42 +7,14 @@ import axios from "axios";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from 'yup';
 
-// const FormStyle = styled.form`
-//   display: flex;
-//   flex-direction: column;
-//   text-align: initial;
-//   border: 1px solid lightgray;
-//   border-radius: 4px; 
-//   padding: 0% 5% 0% 5%;
-//   margin: 5% 10% 5% 10%;
-// `
 
 const LabelStyle = styled.label`
 `
-
-// const InputStyle = styled.input`
-//   margin: 2% 0 0 0;
-//   width: 96%;
-//   padding: 6px 2%;
-//   border: 1px solid lightgray;
-//   border-radius: 4px;
-// `
-
 const FieldContainer = styled.div`
   margin: 4% 0 2% 0;
   display: flex;
   flex-direction: column;
 `
-
-// const NoteInput = styled.textarea`
-//   margin: 2% 0 0 0;
-//   width: 96%;
-//   padding: 6px 2%;
-//   border: 1px solid lightgray;
-//   border-radius: 4px;
-//   height: 55px;
-// `
-
 const ButtonContainer = styled.div`
   display: flex;
   justify-content: space-evenly;
@@ -58,59 +30,25 @@ const BtnStyle = styled.button`
   width: 90px;
 `
 
+const ParaError = styled.p`
+  font-size: 13px;
+  margin: 6px 0 6px 8px;
+  color: red;
+`
+
 // export default function LogForm({ addNewExercise }) {
 const LogForm = ({ addNewExercise, values, errors, touched, status }) => {
   console.log("values", values);
   console.log("errors", errors);
   console.log("touched", touched);
 
-  // const [newExercise, setNewExercise] = useState({
-  //   date: "",
-  //   exerciseType: "",
-  //   targetMuscle: "",
-  //   sets: "",
-  //   reps: "",
-  //   weightLifted: "",
-  //   notes: ""
-  // });
-
-  // const handleChanges = (event) => {
-  //   setNewExercise({ ...newExercise, [event.target.name]: event.target.value});
-  // };
-
   useEffect(() => {
     console.log("this is status:", status);
     status && addNewExercise(status);
     }, [status]);
 
-  // const postData = (event) => {
-  //   event.preventDefault();
-  //   console.log("this is value", newExercise)
-  //   axios
-  //     .post("https://reqres.in/api/users", newExercise)
-  //     .then(res => {
-  //       console.log("this is the response: ", res)
-  //       })
-  //     .catch(err => console.log(err.response));
-  //   alert("New Exercise Submitted");
-
-  //   addNewExercise(newExercise);
-    
-  //   setNewExercise({
-  //     date: "",
-  //     exerciseType: "",
-  //     targetMuscle: "",
-  //     sets: "",
-  //     reps: "",
-  //     weightLifted: "",
-  //     notes: ""
-  //   });
-  // };
-
   return (
     <div>
-      {/* <FormStyle onSubmit={}> */}
-      {/* <FormStyle onSubmit={postData}> */}
       <Form className="form-styled">
         <h3>Add New Exercise</h3>
 
@@ -123,16 +61,10 @@ const LogForm = ({ addNewExercise, values, errors, touched, status }) => {
           />
           {touched.date && errors.date && (
             // errors.name comes from Yup
-            <p>{errors.date}</p>
+            <ParaError>{errors.date}</ParaError>
           )}
           </label>
-          
-          {/* <input
-            id="date"
-            type="date"
-            name="date"
-            onChange={handleChanges}
-          /> */}
+
         </div>
 
         <FieldContainer> {/* This is a regular <div> */}
@@ -147,17 +79,8 @@ const LogForm = ({ addNewExercise, values, errors, touched, status }) => {
             />
 
             {touched.exerciseType && errors.exerciseType && (
-              <p>{errors.exerciseType}</p>
+              <ParaError>{errors.exerciseType}</ParaError>
             )}
-
-            {/* <InputStyle
-              id="exerciseType"
-              type="text"
-              name="exerciseType"
-              placeholder="Enter name of exercise"
-              onChange={handleChanges}
-              value={newExercise.exerciseType}
-            /> */}
 
           </LabelStyle>
         </FieldContainer>
@@ -172,19 +95,10 @@ const LogForm = ({ addNewExercise, values, errors, touched, status }) => {
             />
 
             {touched.targetMuscle && errors.targetMuscle && (
-              <p>{errors.targetMuscle}</p>
+              <ParaError>{errors.targetMuscle}</ParaError>
             )}
                   
           </LabelStyle>
-          
-          {/* <InputStyle
-            id="targetMuscle"
-            type="text"
-            name="targetMuscle"
-            placeholder="Enter target muscle"
-            onChange={handleChanges}
-            value={newExercise.targetMuscle}
-          /> */}
 
         </FieldContainer>
 
@@ -198,18 +112,9 @@ const LogForm = ({ addNewExercise, values, errors, touched, status }) => {
             />
 
             {touched.sets && errors.sets && (
-              <p>{errors.sets}</p>
+              <ParaError>{errors.sets}</ParaError>
             )}        
           </LabelStyle>
-          
-          {/* <InputStyle
-            id="sets"
-            type="number"
-            name="sets"
-            placeholder="Enter number of sets"
-            onChange={handleChanges}
-            value={newExercise.sets}
-          /> */}
 
         </FieldContainer>
 
@@ -223,20 +128,11 @@ const LogForm = ({ addNewExercise, values, errors, touched, status }) => {
             />
 
             {touched.reps && errors.reps && (
-              <p>{errors.reps}</p>
+              <ParaError>{errors.reps}</ParaError>
             )}
           
           </LabelStyle>
           
-          {/* <InputStyle
-            id="reps"
-            type="number"
-            name="reps"
-            placeholder="Enter number of reps"
-            onChange={handleChanges}
-            value={newExercise.reps}
-          /> */}
-
         </FieldContainer>
 
         <FieldContainer>
@@ -245,24 +141,15 @@ const LogForm = ({ addNewExercise, values, errors, touched, status }) => {
               id="weightLifted"
               type="number"
               name="weightLifted"
-              placeholder="How much weight did you lift?"
+              placeholder="How many pounds did you lift?"
             />
 
             {touched.weightLifted && errors.weightLifted && (
-              <p>{errors.weightLifted}</p>
+              <ParaError>{errors.weightLifted}</ParaError>
             )}
 
           </LabelStyle>
           
-          {/* <InputStyle
-            id="weightLifted"
-            type="number"
-            name="weightLifted"
-            placeholder="How much weight did you lift?"
-            onChange={handleChanges}
-            value={newExercise.weightLifted}
-          /> */}
-
         </FieldContainer>
 
         <FieldContainer>
@@ -273,18 +160,11 @@ const LogForm = ({ addNewExercise, values, errors, touched, status }) => {
               placeholder="Add note here"
             />
             {touched.notes && errors.notes && (
-              <p>{errors.notes}</p>
+              <ParaError>{errors.notes}</ParaError>
             )}
 
           </LabelStyle>
 
-          {/* <NoteInput 
-            id="notes"
-            name="notes"
-            placeholder="Add note here"
-            onChange={handleChanges}
-            value={newExercise.notes}
-          /> */}
 
         </FieldContainer>
 
@@ -296,8 +176,7 @@ const LogForm = ({ addNewExercise, values, errors, touched, status }) => {
             <BtnStyle>Previous Log</BtnStyle>
           </Link>
         </ButtonContainer>
-        
-      {/* </FormStyle> */}
+
       </Form>
     </div>
   )
@@ -317,13 +196,13 @@ const FormikLogForm = withFormik({
   },
 
   validationSchema: Yup.object().shape({
-    date: Yup.string().required("error"),
-    exerciseType: Yup.string().required("error"),
-    targetMuscle: Yup.string().required("error"),
-    sets: Yup.number().positive().integer().required("error"),
-    reps: Yup.number().positive().integer().required("error"),
-    weightLifted: Yup.number().positive().integer().required("error"),
-    notes: Yup.string().required("error")
+    date: Yup.string().required("Select a date"),
+    exerciseType: Yup.string().required("Enter exercise name"),
+    // targetMuscle: Yup.string().required("error"),
+    sets: Yup.number().positive().integer().required("Enter number of sets"),
+    reps: Yup.number().positive().integer().required("Enter number of reps")
+    // weightLifted: Yup.number().positive().integer().required("Enter lbs lifted"),
+    // notes: Yup.string().required("error")
   }),
 
   handleSubmit(values, { setStatus, resetForm }) {

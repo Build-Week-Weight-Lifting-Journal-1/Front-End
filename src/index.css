@@ -15,7 +15,7 @@ code {
 
 .date-container {
   width: 100%;
-  margin-bottom: 5%;
+  margin-bottom: 0;
 }
 
 .date-field {
@@ -27,6 +27,7 @@ code {
   color: #DEC79B;
   font-weight: bold;
   font-family: 'Quicksand', sans-serif;
+  font-size: 120%;
 }
 
 .form-styled {
@@ -54,6 +55,7 @@ code {
   border: 1px solid lightgray;
   border-radius: 4px;
   height: 55px;
+  resize: none;
 }
 
 .h3-notes {
