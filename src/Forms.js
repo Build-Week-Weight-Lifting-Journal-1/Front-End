@@ -9,13 +9,13 @@ const SignUp = ({ errors, touched, values }) => {
 
       <Form>
         <Field
-          type='name'
+          type='username'
           name='name'
-          placeholder='First Name'
+          placeholder='Enter Username'
           className='input'
         /><br/>
-        {touched.name && errors.name && <p className='error'>{errors.name}</p>}
-        <Field
+        {touched.username && errors.username && <p className='error'>{errors.username}</p>}
+        {/* <Field
           type='email'
           name='email'
           placeholder='Email'
@@ -23,7 +23,7 @@ const SignUp = ({ errors, touched, values }) => {
         /><br/>
         {touched.email && errors.email && (
           <p className='error'>{errors.email}</p>
-        )}
+        )} */}
         <Field
           type='password'
           name='password'
@@ -33,7 +33,7 @@ const SignUp = ({ errors, touched, values }) => {
         {touched.password && errors.password && (
           <p className='error'>{errors.password}</p>
         )}
-        <Field
+        {/* <Field
           type='password'
           name='confirmPassword'
           placeholder='Confirm Password'
@@ -41,7 +41,7 @@ const SignUp = ({ errors, touched, values }) => {
         /><br/>
         {touched.confirmpassword && errors.confirmpassword && (
           <p className='error'>{errors.confirmpassword}</p>
-        )}<br/>
+        )}<br/> */}
         <button type='submit' className='submit'>
           Submit
         </button>
@@ -51,33 +51,24 @@ const SignUp = ({ errors, touched, values }) => {
 }
 
 const FormikApp = withFormik({
-  mapPropsToValues({ name, email, password, confirmPassword}) {
+  mapPropsToValues({ username,password}) {
     return {
-      name: name || '',
-      email: email || '',
+      username: username || '',
       password: password || '',
-      confirmPassword: confirmPassword || '',
     }
   },
   validationSchema: Yup.object().shape({
     name: Yup.string().required(),
-    email: Yup.string()
-      .email()
+    
+    password: Yup.string()
+      .min(4, 'make a strong password')
       .required(),
-    password: Yup
-    .string()
-    .label('Password')
-    .required()
-    .min(4, 'Password must have more than 4 characters '),
-    confirmPassword: Yup
-    .string()
-    .oneOf([Yup.ref('password')], 'Confirm Password must matched Password')
-    .required('Confirm Password is required')
+
   }),
   handleSubmit(values, { setStatus, resetForm }) {
-      console.log('submitting', values);
+      console.log(values);
       axios
-      .post('https://webpt7-weightliftingjournal.herokuapp.com/api/auth/register', values)
+      .post('https://reqres.in/api/users', values)
       .then(res => {
          console.log('success', res);
          setStatus(res.data);
