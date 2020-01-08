@@ -30,6 +30,7 @@ export default function LastLog({ exerciseList }) {
         <Link to="/new-log">
           <BtnStyle>Create a new log</BtnStyle>
         </Link>
+        <Link to="/new-log" className="material-icons floating-btn">add</Link>
       </div>
     );
   }
@@ -45,6 +46,7 @@ export default function LastLog({ exerciseList }) {
         <Link to="/new-log">
           <BtnStyle>Create a new log</BtnStyle>
         </Link>
+        <Link to="/new-log" className="material-icons floating-btn">add</Link>
       </div>
     );
   };
