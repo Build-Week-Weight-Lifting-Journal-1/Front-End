@@ -32,12 +32,16 @@ const SignUp = ({ errors, touched, values }) => {
         /><br/>
         {touched.password && errors.password && (
           <p className='error'>{errors.password}</p>
+        )}
+        <Field
+          type='password'
+          name='confirmPassword'
+          placeholder='Confirm Password'
+          className='input'
+        /><br/>
+        {touched.confirmpassword && errors.confirmpassword && (
+          <p className='error'>{errors.confirmpassword}</p>
         )}<br/>
-        {/* This here is an optinal thing and I'm unsure if I want to use it. */}
-        {/* <label className='terms'>
-          <Field type='checkbox' name='term' checked={values.term} /> I agree to
-          the <a href='https://github.com/emster7013'>Terms and Conditions</a>
-        </label> */}
         <button type='submit' className='submit'>
           Submit
         </button>
@@ -47,12 +51,12 @@ const SignUp = ({ errors, touched, values }) => {
 }
 
 const FormikApp = withFormik({
-  mapPropsToValues({ name, email, password, term }) {
+  mapPropsToValues({ name, email, password, confirmPassword}) {
     return {
       name: name || '',
       email: email || '',
       password: password || '',
-      term: term || false
+      confirmPassword: confirmPassword || '',
     }
   },
   validationSchema: Yup.object().shape({
@@ -60,9 +64,15 @@ const FormikApp = withFormik({
     email: Yup.string()
       .email()
       .required(),
-    password: Yup.string()
-      .min(0)
-      .required()
+    password: Yup
+    .string()
+    .label('Password')
+    .required()
+    .min(4, 'Password must have more than 4 characters '),
+    confirmPassword: Yup
+    .string()
+    .oneOf([Yup.ref('password')], 'Confirm Password must matched Password')
+    .required('Confirm Password is required')
   }),
   handleSubmit(values, { setStatus, resetForm }) {
       console.log('submitting', values);
