@@ -5,7 +5,10 @@ export const login = (credentials, history) => {
   return dispatch => {
     dispatch({ type: LOGIN_START });
     axios
-      .post("", credentials)
+      .post(
+        "https://webpt7-weightliftingjournal.herokuapp.com/api/auth/login",
+        credentials
+      )
       .then(res => {
         dispatch({ type: LOGIN_SUCCESS, payload: res.data });
         localStorage.setItem("token", res.data.token);
