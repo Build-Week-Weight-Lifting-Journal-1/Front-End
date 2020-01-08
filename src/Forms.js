@@ -11,7 +11,7 @@ const SignUp = ({ errors, touched, values }) => {
         <Field
           type='name'
           name='name'
-          placeholder='Name'
+          placeholder='First Name'
           className='input'
         /><br/>
         {touched.name && errors.name && <p className='error'>{errors.name}</p>}
@@ -34,10 +34,10 @@ const SignUp = ({ errors, touched, values }) => {
           <p className='error'>{errors.password}</p>
         )}<br/>
         {/* This here is an optinal thing and I'm unsure if I want to use it. */}
-        <label className='terms'>
+        {/* <label className='terms'>
           <Field type='checkbox' name='term' checked={values.term} /> I agree to
           the <a href='https://github.com/emster7013'>Terms and Conditions</a>
-        </label>
+        </label> */}
         <button type='submit' className='submit'>
           Submit
         </button>
@@ -75,11 +75,6 @@ const FormikApp = withFormik({
       })
       .catch(err => console.log('NOOOOO!!!', err.response));
    },
-  // handleSubmit(values, { resetForm }) {
-  //   //Include an axios.get here.
-  //   console.log(values)
-  //   resetForm()
-  // }
 })
 const FormSignUp = FormikApp(SignUp)
 
