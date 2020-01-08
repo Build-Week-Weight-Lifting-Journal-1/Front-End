@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from 'yup';
+import Header from './Header';
 
 
 const LabelStyle = styled.label`
@@ -49,6 +50,7 @@ const LogForm = ({ addNewExercise, values, errors, touched, status }) => {
 
   return (
     <div>
+      <Header /> 
       <Form className="form-styled">
         <h3>Add New Exercise</h3>
 
@@ -172,7 +174,7 @@ const LogForm = ({ addNewExercise, values, errors, touched, status }) => {
           {/* SubButton = <button> */}
           <BtnStyle type="submit">Log Exercise</BtnStyle>
 
-          <Link exact to="/">
+          <Link exact to="/lastlog">
             <BtnStyle>Previous Log</BtnStyle>
           </Link>
         </ButtonContainer>

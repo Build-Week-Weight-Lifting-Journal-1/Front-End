@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import styled from 'styled-components';
 import SearchForm from './SearchForm';
 import LogCard from './LogCard';
+import Header from './Header';
 
 
 const BtnStyle = styled.button`
@@ -24,6 +25,7 @@ export default function LastLog({ exerciseList }) {
   if (exerciseList.length === 0) {
     return (
       <div>
+        <Header /> 
         <h3>You have no previous logs</h3>
         <Link to="/new-log">
           <BtnStyle>Create a new log</BtnStyle>
@@ -34,6 +36,7 @@ export default function LastLog({ exerciseList }) {
   else {
     return (
       <div>
+        <Header /> 
         <SearchForm exerciseList={exerciseList} />
         <h3>Your last five logs:</h3>
         {exerciseList.slice(-5).map((exercise) =>

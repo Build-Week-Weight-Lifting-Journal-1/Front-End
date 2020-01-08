@@ -3,9 +3,30 @@ import './App.css';
 import LogForm from "./components/LogForm";
 import { Route } from "react-router-dom";
 import LastLog from "./components/LastLog";
-import Header from "./components/Header";
+import Forms from "./components/Forms";
+// import styled from 'styled-components';
+
+// const Style = styled.div`
+//   display: flex;
+//   margin: 0 auto;
+//   justify-content: center;
+//   height: 100vh;
+//   font-size: 1.5rem;
+//   background #18181E ;
+//   color: #DEC79B;
+// `
 
 function App() {
+
+  const [members, setMembers] = useState([{
+    name: '',
+    email:'',
+    password: ''
+  }]);
+
+  const addNewMember = teamMember =>{
+    setMembers([...members, teamMember]);
+  };
 
   const [exerciseList, setExerciseList] = useState([]);
 
@@ -29,9 +50,20 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
+      {/* <Style>
+        <div className="App">
+          <img src={logo} alt="Logo"/>
+          <Forms addNewMember={addNewMember}/>
+        </div>
+      </Style> */}
       <Route 
-        exact path="/" 
+        exact path="/"
+        render={routeProps => {
+          return <Forms {...routeProps} addNewMember={addNewMember}/>
+        }}
+      />
+      <Route 
+        exact path="/lastlog" 
         render={routeProps => {
           return <LastLog {...routeProps}  exerciseList={exerciseList}/>
         }} 
