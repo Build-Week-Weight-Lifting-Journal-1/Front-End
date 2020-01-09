@@ -64,7 +64,7 @@ const FormikApp = withFormik({
       .min(4, "make a strong password")
       .required()
   }),
-  handleSubmit(values, { setStatus, resetForm, history }) {
+  handleSubmit(values, { setStatus, resetForm }) {
     console.log(values);
     axios
       .post(
@@ -74,7 +74,6 @@ const FormikApp = withFormik({
       .then(res => {
         console.log("success", res);
         setStatus(res.data);
-        history.push("/log-in");
         resetForm();
       })
       .catch(err => console.log("NOOOOO!!!", err.response));
