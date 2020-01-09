@@ -16,8 +16,7 @@ import Forms from "./components/Forms";
 // `
 function App() {
   const [members, setMembers] = useState([{
-    name: '',
-    email:'',
+    username: '',
     password: ''
   }]);
   const addNewMember = teamMember =>{
