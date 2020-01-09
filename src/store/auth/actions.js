@@ -18,7 +18,7 @@ export const login = (credentials, history) => {
         });
         localStorage.setItem("token", res.data.token);
         localStorage.setItem("user_id", res.data.id);
-        history.push("/");
+        history.push("/new-log");
       })
       .catch(err => {
         dispatch({
