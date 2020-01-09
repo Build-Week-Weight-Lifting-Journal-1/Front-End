@@ -132,7 +132,7 @@ const FormikLogIn = withFormik({
   validationSchema: Yup.object().shape({
     username: Yup.string().required("Please enter your username."),
     password: Yup.string()
-      .min(6)
+      .min(2)
       .required("Please enter at least 6 characters.")
   }),
 
