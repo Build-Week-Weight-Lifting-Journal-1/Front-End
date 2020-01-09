@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 // import CharacterCard from "./CharacterCard";
 import styled from "styled-components";
 import LogCard from "./LogCard";
+import { withFormik, Form, Field } from "formik";
+import * as Yup from 'yup';
 
 const InputField = styled.input`
   margin-left: 6px;
@@ -50,7 +52,6 @@ export default function SearchForm({ exerciseList }) {
           id="date"
           type="date"
           onChange={handleChange}
-          // value={searchTerm}
         />
         <BtnStyle type="submit" onClick={submitForm}>Search</BtnStyle>
       </form>
@@ -60,3 +61,13 @@ export default function SearchForm({ exerciseList }) {
     </section>
   );
 }
+
+const FormikSearchForm  = withFormik({
+  mapPropsToValues(props) {
+    return {
+
+    };
+  },
+
+
+})(SearchForm);
