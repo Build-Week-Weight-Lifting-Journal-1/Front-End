@@ -2,13 +2,20 @@ import React, { useState, useEffect } from "react";
 // import CharacterCard from "./CharacterCard";
 import styled from "styled-components";
 import LogCard from "./LogCard";
-
+import { withFormik, Form, Field } from "formik";
+import * as Yup from 'yup';
 
 const InputField = styled.input`
   margin-left: 6px;
 `
 
-const Button = styled.button`
+const BtnStyle = styled.button`
+  background-color: #18181E;
+  color: white;
+  font-family: 'Karma', serif;
+  height: 28px;
+  border-color: #18181E;
+  border-radius: 5px;
   margin: 10px;
 `
 
@@ -40,14 +47,13 @@ export default function SearchForm({ exerciseList }) {
   return (
     <section className="search-form">
       <form>
-        <label htmlFor="date">Search for date:</label>
+        <label htmlFor="date" className="date-label">Search for date:</label>
         <InputField
           id="date"
           type="date"
           onChange={handleChange}
-          // value={searchTerm}
         />
-        <Button type="submit" onClick={submitForm}>Search</Button>
+        <BtnStyle type="submit" onClick={submitForm}>Search</BtnStyle>
       </form>
       {searchResults.map(exercise => (
         <LogCard exercise={exercise} />
@@ -55,3 +61,13 @@ export default function SearchForm({ exerciseList }) {
     </section>
   );
 }
+
+const FormikSearchForm  = withFormik({
+  mapPropsToValues(props) {
+    return {
+
+    };
+  },
+
+
+})(SearchForm);
