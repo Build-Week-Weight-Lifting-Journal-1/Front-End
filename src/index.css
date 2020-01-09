@@ -9,8 +9,7 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family:'Karma', serif;
 }
 
 .date-container {
@@ -107,3 +106,4 @@ code {
   font-weight: bold;
   font-family: 'Karma', serif;
 }
+
