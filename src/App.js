@@ -5,6 +5,8 @@ import LastLog from "./components/LastLog";
 import Forms from "./components/Forms";
 import FormikLogIn from "./log-in";
 import "./fonts.css";
+import "./App.css";
+
 // import styled from 'styled-components';
 // const Style = styled.div`
 //   display: flex;
