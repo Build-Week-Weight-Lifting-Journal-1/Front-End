@@ -175,7 +175,7 @@ const LogForm = ({ addNewExercise, values, errors, touched, status }) => {
           <BtnStyle type="submit">Log Exercise</BtnStyle>
 
           <Link exact to="/lastlog">
-            <BtnStyle>Previous Log</BtnStyle>
+            <BtnStyle>Return</BtnStyle>
           </Link>
         </ButtonContainer>
 

@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 import logo from "../images/Ml_logo.png"
 
 const HeaderStyle = styled.header`
@@ -36,8 +35,8 @@ export default function Header() {
         <Logo src={logo}/>
       </ImgCont>
       <NavStyle>
-        <Link className="nav-link">Home</Link>
-        <Link className="nav-link">Logout</Link>
+        <a href="https://clever-sammet-e90b38.netlify.com/" className="nav-link">Home</a>
+        <a className="nav-link">Logout</a>
       </NavStyle>
     </HeaderStyle>
   )

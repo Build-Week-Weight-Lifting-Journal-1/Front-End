@@ -19,7 +19,7 @@ const BtnStyle = styled.button`
   margin: 10px;
 `
 
-export default function SearchForm({ exerciseList }) {
+const SearchForm = ({ exerciseList }) => {
 
   const [searchDate, setSearchDate] = useState("");
 
@@ -65,9 +65,19 @@ export default function SearchForm({ exerciseList }) {
 const FormikSearchForm  = withFormik({
   mapPropsToValues(props) {
     return {
-
+      date: props.date || "",
     };
   },
 
+  validationSchema: Yup.object().shape({
+    date: Yup.string().required("error")
+  }),
+
+  handleSubmit(values, { setStatus, resetForm }) {
+    setStatus(values);
+    resetForm();
+  }
 
 })(SearchForm);
+
+export default SearchForm;
