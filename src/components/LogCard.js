@@ -29,11 +29,11 @@ export default function LogCard ({ exercise }) {
         <img className="card-img" src={exerciselog} />
       </div>
       <h3 className="h3-date">Date: {exercise.date}</h3>
-      <H3Styled>Exercise Type: {exercise.exerciseType}</H3Styled>
-      <H3Styled>Target Muscle: {exercise.targetMuscle}</H3Styled>
+      <H3Styled>Exercise Type: {exercise.exercise}</H3Styled>
+      <H3Styled>Target Muscle: {exercise.muscle}</H3Styled>
       <H3Styled>Number of Sets: {exercise.sets}</H3Styled>
       <H3Styled>Number of Reps: {exercise.reps}</H3Styled>
-      <H3Styled>Weight Lifted: {exercise.weightLifted} lb</H3Styled>
+      <H3Styled>Weight Lifted: {exercise.weight} lb</H3Styled>
       <NotesContainer>
         <h3 className="h3-notes">Notes:</h3>
         <p className="p-notes">{exercise.notes}</p>

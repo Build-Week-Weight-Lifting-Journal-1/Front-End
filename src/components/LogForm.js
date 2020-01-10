@@ -71,33 +71,33 @@ const LogForm = ({ addNewExercise, values, errors, touched, status }) => {
 
         <FieldContainer> {/* This is a regular <div> */}
           {/* LabelStyle = <label> */}
-          <LabelStyle htmlFor="exerciseType">Type of Exercise
+          <LabelStyle htmlFor="exercise">Type of Exercise
           
             <Field className="input-styled"
-              id="exerciseType"
+              id="exercise"
               type="text"
-              name="exerciseType"
+              name="exercise"
               placeholder="Enter name of exercise"
             />
 
-            {touched.exerciseType && errors.exerciseType && (
-              <ParaError>{errors.exerciseType}</ParaError>
+            {touched.exercise && errors.exercise && (
+              <ParaError>{errors.exercise}</ParaError>
             )}
 
           </LabelStyle>
         </FieldContainer>
 
         <FieldContainer>
-          <LabelStyle htmlFor="targetMuscle">Target Muscle
+          <LabelStyle htmlFor="muscle">Target Muscle
             <Field className="input-styled"
-              id="targetMuscle"
+              id="muscle"
               type="text"
-              name="targetMuscle"
+              name="muscle"
               placeholder="Enter target muscle"       
             />
 
-            {touched.targetMuscle && errors.targetMuscle && (
-              <ParaError>{errors.targetMuscle}</ParaError>
+            {touched.muscle && errors.muscle && (
+              <ParaError>{errors.muscle}</ParaError>
             )}
                   
           </LabelStyle>
@@ -138,16 +138,16 @@ const LogForm = ({ addNewExercise, values, errors, touched, status }) => {
         </FieldContainer>
 
         <FieldContainer>
-          <LabelStyle htmlFor="weightLifted">Weight Lifted
+          <LabelStyle htmlFor="weight">Weight Lifted
             <Field className="input-styled"
-              id="weightLifted"
+              id="weight"
               type="number"
-              name="weightLifted"
+              name="weight"
               placeholder="How many pounds did you lift?"
             />
 
-            {touched.weightLifted && errors.weightLifted && (
-              <ParaError>{errors.weightLifted}</ParaError>
+            {touched.weight && errors.weight && (
+              <ParaError>{errors.weight}</ParaError>
             )}
 
           </LabelStyle>
@@ -188,18 +188,18 @@ const FormikLogForm = withFormik({
   mapPropsToValues(props) {
     return {
       date: props.date || "",
-      exerciseType: props.exerciseType || "",
-      targetMuscle: props.targetMuscle || "",
+      exercise: props.exercise || "",
+      muscle: props.muscle || "",
       sets: props.sets || "",
       reps: props.reps || "",
-      weightLifted: props.weightLifted || "",
+      weight: props.weight || "",
       notes: props.notes || ""
     };
   },
 
   validationSchema: Yup.object().shape({
     date: Yup.string().required("Select a date"),
-    exerciseType: Yup.string().required("Enter exercise name"),
+    exercise: Yup.string().required("Enter exercise name"),
     // targetMuscle: Yup.string().required("error"),
     sets: Yup.number().positive().integer().required("Enter number of sets"),
     reps: Yup.number().positive().integer().required("Enter number of reps")
@@ -211,7 +211,7 @@ const FormikLogForm = withFormik({
     // event.preventDefault();
     console.log("this is value", values)
     axios
-      .post("https://reqres.in/api/users", values)
+      .post("https://webpt7-weightliftingjournal.herokuapp.com/api/workouts/newworkout", values)
       .then(res => {
         console.log("this is the response: ", res)
         // sends a status update through props in UserForm with value as response.data content

@@ -34,11 +34,11 @@ function App() {
 
     const newExercise = {
       date: exercise.date,
-      exerciseType: exercise.exerciseType,
-      targetMuscle: exercise.targetMuscle,
+      exercise: exercise.exercise,
+      muscle: exercise.muscle,
       sets: exercise.sets,
       reps: exercise.reps,
-      weightLifted: exercise.weightLifted,
+      weight: exercise.weight,
       notes: exercise.notes
     }
     const newExerciseList = [...exerciseList, newExercise];
