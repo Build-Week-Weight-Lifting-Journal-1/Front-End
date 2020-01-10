@@ -5,10 +5,6 @@ import LogCard from "./LogCard";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from 'yup';
 
-const InputField = styled.input`
-  margin-left: 6px;
-`
-
 const BtnStyle = styled.button`
   background-color: #18181E;
   color: white;
@@ -18,43 +14,73 @@ const BtnStyle = styled.button`
   border-radius: 5px;
   margin: 10px;
 `
+const ParaError = styled.p`
+  font-size: 13px;
+  margin: 10px 0 -8px 8px;
+  color: red;
+`
 
-const SearchForm = ({ exerciseList }) => {
+const SearchForm = ({ exerciseList, values, errors, touched, status }) => {
+  console.log("this is values in Searchform", values);
 
-  const [searchDate, setSearchDate] = useState("");
+  // const [searchDate, setSearchDate] = useState("");
 
   // const [searchResults, setSearchResults] = useState(exerciseList);
   const [searchResults, setSearchResults] = useState([]);
 
-  useEffect(() => {}, [searchDate]);
-
-  const handleChange = event => {
-    setSearchDate(event.target.value);
-  };
-
-  const submitForm = event => {
-    event.preventDefault();
-
+  useEffect(() => {
+    console.log("this is values in useEffect", values);
+    console.log("this is status", status);
+    console.log("this is exerciseList", exerciseList);
     const results = exerciseList.filter(exercise => {
-      return exercise.date === searchDate;
+      return exercise.date === status;
     });
 
     setSearchResults(results);
-    console.log("this is results", searchResults);
-  };
+    console.log("this is results", results);
+
+  }, [status]);
+
+  // const handleChange = event => {
+  //   setSearchDate(event.target.value);
+  // };
+
+  // const submitForm = event => {
+  //   event.preventDefault();
+
+  //   const results = exerciseList.filter(exercise => {
+  //     return exercise.date === searchDate;
+  //   });
+
+  //   setSearchResults(results);
+  //   console.log("this is results", searchResults);
+  // };
 
 
   return (
     <section className="search-form">
-      <form>
-        <label htmlFor="date" className="date-label">Search for date:</label>
-        <InputField
-          id="date"
-          type="date"
-          onChange={handleChange}
-        />
-        <BtnStyle type="submit" onClick={submitForm}>Search</BtnStyle>
-      </form>
+      {/* <form> */}
+      <Form>
+        {touched.date && errors.date && (
+          // errors.name comes from Yup
+          <ParaError>{errors.date}</ParaError>
+        )}
+
+        <label htmlFor="date" className="date-label">Search for date:
+          {/* <InputField */}
+          <Field className="search-field"
+            id="date"
+            type="date"
+            name="date"
+            // onChange={handleChange}
+          />
+        </label>
+
+        {/* <BtnStyle type="submit" onClick={submitForm}>Search</BtnStyle> */}
+        <BtnStyle type="submit">Search</BtnStyle>
+        
+      {/* </form> */}
+      </Form>
       {searchResults.map(exercise => (
         <LogCard exercise={exercise} />
       ))}
@@ -70,14 +96,14 @@ const FormikSearchForm  = withFormik({
   },
 
   validationSchema: Yup.object().shape({
-    date: Yup.string().required("error")
+    date: Yup.string().required("Select a date")
   }),
 
-  handleSubmit(values, { setStatus, resetForm }) {
-    setStatus(values);
-    resetForm();
+  handleSubmit(values, { setStatus }) {
+    setStatus(values.date.toString());
+    // resetForm();
   }
 
 })(SearchForm);
 
-export default SearchForm;
+export default FormikSearchForm;

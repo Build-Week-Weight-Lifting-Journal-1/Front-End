@@ -56,15 +56,15 @@ const LogForm = ({ addNewExercise, values, errors, touched, status }) => {
 
         <div className="date-container">
           <label htmlFor="date">Date:
-          <Field className="date-field"
-            id="date"
-            type="date"
-            name="date"
-          />
-          {touched.date && errors.date && (
-            // errors.name comes from Yup
-            <ParaError>{errors.date}</ParaError>
-          )}
+            <Field className="date-field"
+              id="date"
+              type="date"
+              name="date"
+            />
+            {touched.date && errors.date && (
+              // errors.name comes from Yup
+              <ParaError>{errors.date}</ParaError>
+            )}
           </label>
 
         </div>

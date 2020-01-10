@@ -36,7 +36,7 @@ export default function Header() {
       </ImgCont>
       <NavStyle>
         <a href="https://clever-sammet-e90b38.netlify.com/" className="nav-link">Home</a>
-        <a className="nav-link">Logout</a>
+        <a href="#" className="nav-link">Logout</a>
       </NavStyle>
     </HeaderStyle>
   )

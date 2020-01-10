@@ -107,3 +107,7 @@ code {
   font-weight: bold;
   font-family: 'Karma', serif;
 }
+
+.search-field {
+  margin-left: 6px;
+}
