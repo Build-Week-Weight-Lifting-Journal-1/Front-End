@@ -9,7 +9,7 @@ export const login = (credentials, history) => {
     axios
       .post(
         "https://webpt7-weightliftingjournal.herokuapp.com/api/auth/login",
-        credentials
+        credentials, {withCredentials: true}
       )
       .then(res => {
         dispatch({
