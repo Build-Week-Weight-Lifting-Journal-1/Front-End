@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import SearchForm from './SearchForm';
 import LogCard from './LogCard';
 import Header from './Header';
+import LastFiveLogs from './LastFiveLogs';
 
 
 const BtnStyle = styled.button`
@@ -39,10 +40,7 @@ export default function LastLog({ exerciseList }) {
       <div>
         <Header /> 
         <SearchForm exerciseList={exerciseList} />
-        <h3>Your last five logs:</h3>
-        {exerciseList.slice(-5).map((exercise) =>
-          <LogCard exercise = {exercise} /> 
-        )}
+        
         <Link to="/new-log">
           <BtnStyle>Create a new log</BtnStyle>
         </Link>

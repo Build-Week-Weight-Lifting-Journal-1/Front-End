@@ -4,6 +4,7 @@ import styled from "styled-components";
 import LogCard from "./LogCard";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from 'yup';
+import LastFiveLogs from './LastFiveLogs';
 
 const BtnStyle = styled.button`
   background-color: #18181E;
@@ -14,10 +15,16 @@ const BtnStyle = styled.button`
   border-radius: 5px;
   margin: 10px;
 `
+
 const ParaError = styled.p`
   font-size: 13px;
   margin: 10px 0 -8px 8px;
   color: red;
+`
+
+const ErrorPMessage = styled.p`
+  margin-top: 0;
+  color: darkred;
 `
 
 const SearchForm = ({ exerciseList, values, errors, touched, status }) => {
@@ -29,9 +36,9 @@ const SearchForm = ({ exerciseList, values, errors, touched, status }) => {
   const [searchResults, setSearchResults] = useState([]);
 
   useEffect(() => {
-    console.log("this is values in useEffect", values);
-    console.log("this is status", status);
-    console.log("this is exerciseList", exerciseList);
+    // console.log("this is values in useEffect", values);
+    // console.log("this is status", status);
+    // console.log("this is exerciseList", exerciseList);
     const results = exerciseList.filter(exercise => {
       return exercise.date === status;
     });
@@ -40,6 +47,36 @@ const SearchForm = ({ exerciseList, values, errors, touched, status }) => {
     console.log("this is results", results);
 
   }, [status]);
+
+  const returnResults = () => {
+    if (touched.date && searchResults.length === 0) {
+      console.log("first if is running");
+      return (
+        <div>
+          <ErrorPMessage>You don't have logs for that date</ErrorPMessage>
+          <LastFiveLogs exerciseList={exerciseList} />
+        </div>
+      );
+    }
+
+    else if (searchResults.length === 0) {
+      console.log("second if is running");
+      return (
+        <div>
+          <LastFiveLogs exerciseList={exerciseList} />
+        </div>
+      )
+    }
+
+    else if (searchResults.length > 0) {
+      console.log("third if is running");
+      return (
+        searchResults.map(exercise => (
+          <LogCard exercise={exercise} />
+        ))
+      )
+    }
+  }
 
   // const handleChange = event => {
   //   setSearchDate(event.target.value);
@@ -81,9 +118,10 @@ const SearchForm = ({ exerciseList, values, errors, touched, status }) => {
         
       {/* </form> */}
       </Form>
-      {searchResults.map(exercise => (
+      {/* {searchResults.map(exercise => (
         <LogCard exercise={exercise} />
-      ))}
+      ))} */}
+      {returnResults()}
     </section>
   );
 }
