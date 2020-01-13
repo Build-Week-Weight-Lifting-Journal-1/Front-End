@@ -69,7 +69,7 @@ const FormikApp = withFormik({
     axios
       .post(
         "https://webpt7-weightliftingjournal.herokuapp.com/api/auth/register",
-        values, {withCredentials: true}
+        values
       )
       .then(res => {
         console.log("success", res);
